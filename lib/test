@@ -1,0 +1,189 @@
+Stack(
+                                    children: [
+                                      // Main segment
+                                      Card(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(12)),
+                                        color: Colors.white,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      16, 16, 0, 0),
+                                              child: Text(
+                                                todos[index].title,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleMedium,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      16, 24, 16, 0),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        "Start Date",
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .labelSmall,
+                                                      ),
+                                                      const SizedBox(height: 4),
+                                                      Text(
+                                                        DateFormat(
+                                                                'dd MMM yyyy')
+                                                            .format(todos[index]
+                                                                .startdate),
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .bodyLarge,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        "End Date",
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .labelSmall,
+                                                      ),
+                                                      const SizedBox(height: 4),
+                                                      Text(
+                                                        DateFormat(
+                                                                'dd MMM yyyy')
+                                                            .format(todos[index]
+                                                                .enddate),
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .bodyLarge,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        "Time left",
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .labelSmall,
+                                                      ),
+                                                      const SizedBox(height: 4),
+                                                      Text(
+                                                        diff <= Duration.zero
+                                                            ? '00 hrs 00 min'
+                                                            : daysChecker == 00
+                                                                ? '$hours hrs $minutes min'
+                                                                : '$days day $hours hrs',
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .bodyLarge,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            //Status segment
+                                            Expanded(
+                                              child: Stack(
+                                                children: [
+                                                  Positioned.fill(
+                                                      top: 20,
+                                                      child: Container(
+                                                        decoration: const BoxDecoration(
+                                                            color: Color(
+                                                                0xFFE8E3D0),
+                                                            borderRadius: BorderRadius.only(
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        12),
+                                                                bottomRight: Radius
+                                                                    .circular(
+                                                                        12))),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  left: 16),
+                                                          child: Row(
+                                                            children: [
+                                                              Text(
+                                                                "Status",
+                                                                style: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .labelSmall,
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .only(
+                                                                        left:
+                                                                            8),
+                                                                child: Text(
+                                                                  _isChecked[index] ==
+                                                                          true
+                                                                      ? 'Complete'
+                                                                      : 'Incomplete',
+                                                                  style: Theme.of(
+                                                                          context)
+                                                                      .textTheme
+                                                                      .bodyLarge,
+                                                                ),
+                                                              ),
+                                                              const Spacer(),
+                                                              Text(
+                                                                "Tick if completed",
+                                                                style: Theme.of(
+                                                                        context)
+                                                                    .textTheme
+                                                                    .labelSmall,
+                                                              ),
+                                                              Checkbox(
+                                                                  checkColor:
+                                                                      Colors
+                                                                          .black,
+                                                                  value:
+                                                                      _isChecked[
+                                                                          index],
+                                                                  onChanged:
+                                                                      (val) {
+                                                                    setState(
+                                                                        () {
+                                                                      _isChecked[
+                                                                              index] =
+                                                                          val!;
+                                                                    });
+                                                                  })
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ))
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  )
